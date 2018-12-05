@@ -1,11 +1,29 @@
 # So, you want to go Open?
 
-## SoOpen - Intro
+## SoOpen - 1. Intro
 
 General introduction about Open Science and Open Source
 
 Duration of the presentation: 45 minutes
+[Access to the presentation](https://epfl-scitas.github.io/SoOpen-intro/presentation.html)
 
+## SoOpen - 2. Versioning
+
+How to use versioning in the case of scientific code and collaboration
+
+Duration of the presentation: 45 minutes
+[Access to the presentation](https://epfl-scitas.github.io/SoOpen-intro/versioning.pdf)
+
+
+## SoOpen - 3. Documentation
+How to document and publish code and data
+Duration of the presentation: 45 minutes
+[Access to the presentation](https://epfl-scitas.github.io/SoOpen-intro/documentation.html)
+
+
+
+
+## Access from the source :
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/epfl-scitas/SoOpen-Intro/master?urlpath=rstudio) Launch with RStudio
 
