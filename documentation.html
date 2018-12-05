@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Samath Sitthida, Antoine Masson" />
+  <title>So, you want to go Open?</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="documentation_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="documentation_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">So, you want to go Open?</h1>
+    <h2 class="author">Samath Sitthida, Antoine Masson</h2>
+    <h3 class="date">December 4th 2018</h3>
+</section>
+
+<section class="slide level1">
+
+<style>
+.reveal section img { background:none; border:none; box-shadow:none; }
+</style>
+</section>
+<section id="part-3-documentation" class="slide level1">
+<h1>Part 3 : Documentation</h1>
+<aside class="notes">
+45 min
+</aside>
+</section>
+<section class="slide level1">
+
+<h2 id="documentation-supports-open-source-and-versioning">Documentation supports open source and versioning</h2>
+<aside class="notes">
+Documentation supports the previous points i.e. open source and versioning all along the code/software lifecycle from both producer and consumer point of views. Let’s reviews the benefits of documenting one’s work
+</aside>
+</section>
+<section class="slide level1">
+
+Keep track with one’s own work
+<p class="fragment">
+Understand others’ work
+</p>
+</section>
+<section class="slide level1">
+
+Internal communication
+<p class="fragment">
+External communication
+</p>
+</section>
+<section class="slide level1">
+
+Identify source code/software
+<p class="fragment">
+Identify code/software producers (myself or fellow coders)
+</p>
+<aside class="notes">
+What? Why? Who? When? Where? How?
+</aside>
+</section>
+<section class="slide level1">
+
+Share/Reuse code
+<p class="fragment">
+Contribute/Get contributions
+</p>
+</section>
+<section class="slide level1">
+
+Cite/Be cited
+<p class="fragment">
+Credit/Be credited
+</p>
+</section>
+<section class="slide level1">
+
+<h2 id="warning">Warning</h2>
+</section>
+<section class="slide level1">
+
+<p>Sharing and reusing IS NOT an invitation to plagiarism.</p>
+<p class="fragment">
+You still have to cite, and use the code according to the license
+</p>
+<aside class="notes">
+Provided that sharing and reusing IS NOT an invitation to plagiarism. We act responsibly. See Licenses part for ways to counteract plagiarism
+</aside>
+</section>
+<section class="slide level1">
+
+<h2 id="documentation-also-supports">Documentation also supports</h2>
+</section>
+<section class="slide level1">
+
+<p>Software indexing/retrieval in :</p>
+<ul>
+<li><p>software platforms</p></li>
+<li><p>repositories</p></li>
+<li><p>libraries</p></li>
+</ul>
+<aside class="notes">
+Use case example –&gt; when searching for code
+</aside>
+</section>
+<section class="slide level1">
+
+<p>Software long term preservation/archiving</p>
+<aside class="notes">
+Use case example –&gt; when managing legacy code You don’t want to throw it away Code as a memory artefact
+</aside>
+</section>
+<section class="slide level1">
+
+<h2 id="what-you-want-to-document">What you want to document</h2>
+<h2 id="what-you-will-mention">What you will mention</h2>
+</section>
+<section class="slide level1">
+
+<ul>
+<li><p>Description of the source code</p></li>
+<li><p>Description of the software</p></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<p>Including * Code explanations</p>
+<ul>
+<li><p>Usage</p></li>
+<li><p>Author</p></li>
+<li><p>Contact infos</p></li>
+<li><p>UPIds (Unique Persistent IDentifiers)</p></li>
+<li><p>License</p></li>
+<li><p>…</p></li>
+</ul>
+<aside class="notes">
+UPIds such as URI (unique resource identifier) DOI (digital object identifier) ORCID (digital name identifier)
+</aside>
+</section>
+<section class="slide level1">
+
+<h2 id="box-popular-open-source-licenses">Box: Popular Open Source Licenses</h2>
+</section>
+<section class="slide level1">
+
+<p>Choose a licence and stick to it.</p>
+<p>It can be very painful to change a licence (need to ask all the contributors).</p>
+<p>Here is the list of Open Source Licences as suggested by the TTO <a href="https://tto.epfl.ch/scientists/software/choose_the_license/open_source_licenses/" class="uri">https://tto.epfl.ch/scientists/software/choose_the_license/open_source_licenses/</a></p>
+</section>
+<section class="slide level1">
+
+<h3 id="mit">MIT</h3>
+<ul>
+<li><p>Short</p></li>
+<li><p>Permissive</p></li>
+<li><p>No warranty</p></li>
+<li><p><a href="http://opensource.org/licenses/MIT" class="uri">http://opensource.org/licenses/MIT</a></p></li>
+</ul>
+<aside class="notes">
+The MIT license is a very short and permissive license for users. The software can be used for any application including integration into commercial software (e.g. proprietary software) as long as the original copyright holder is cited in the re-distributed software. Software is provided without warranty and the software author/owner cannot be held liable for damages (as far as permitted by applicable law).
+</aside>
+</section>
+<section class="slide level1">
+
+<h3 id="bsd">BSD</h3>
+<ul>
+<li><p>Short</p></li>
+<li><p>Permissive</p></li>
+<li><p>Trademarks prohibited</p></li>
+<li><p>No warranty</p></li>
+<li><p><a href="http://opensource.org/licenses/BSD-3-Clause" class="uri">http://opensource.org/licenses/BSD-3-Clause</a></p></li>
+<li><p><a href="http://opensource.org/licenses/BSD-2-Clause" class="uri">http://opensource.org/licenses/BSD-2-Clause</a></p></li>
+</ul>
+<aside class="notes">
+The BSD license is also a very short and permissive license for users. The software can be used for any application including integration into commercial software (e.g. proprietary software) as long as the original copyright holder is cited in the re-distributed software. Use of trademarks from original licensors is expressly prohibited. Software is provided without warranty and the software author/owner cannot be held liable for damages (as far as permitted by applicable law).
+</aside>
+</section>
+<section class="slide level1">
+
+<h3 id="apache-2.0">Apache 2.0</h3>
+<ul>
+<li><p>Permissive</p></li>
+<li><p>Patents allowed</p></li>
+<li><p>No warranty</p></li>
+<li><p><a href="http://opensource.org/licenses/Apache-2.0" class="uri">http://opensource.org/licenses/Apache-2.0</a></p></li>
+</ul>
+<aside class="notes">
+Apache is also considered a permissive license for users. The software can be used for any application including integration into commercial software (e.g. proprietary software) as long as the original copyright holder is cited in the re-distributed software. The license provides an express grant of a license under patents, which the contributors may have on the software. Software is provided without warranty and the software author/owner cannot be held liable for damages (as far as permitted by applicable law).
+</aside>
+</section>
+<section class="slide level1">
+
+<h3 id="gpl">GPL</h3>
+<ul>
+<li><p>Copyleft license</p></li>
+<li><p>Patents allowed</p></li>
+<li><p>Viral</p></li>
+<li><p><a href="http://opensource.org/licenses/gpl-3.0" class="uri">http://opensource.org/licenses/gpl-3.0</a></p></li>
+</ul>
+<aside class="notes">
+Define COPYLEFT: GPL is a so-called “copyleft “ license. This means that anyone who wants to re-distribute the code in a modified or unmodified form shall also share the source code of the original software as well as the source code of his/her own modifications, under the same license terms. For this reason GPL license is also called viral. The license provides an express grant of a license under patents, which the contributors may have on the software. Commercial use of GPL code is allowed as long as the source code is also provided to end users.
+</aside>
+</section>
+<section class="slide level1">
+
+<h3 id="lgpl">LGPL</h3>
+<ul>
+<li><p>Sharing libraries under the same terms</p></li>
+<li><p>Mix of different licenses allowed</p></li>
+<li><p><a href="http://opensource.org/licenses/LGPL-3.0" class="uri">http://opensource.org/licenses/LGPL-3.0</a></p></li>
+</ul>
+<aside class="notes">
+Based on the original GPL license the Lesser GPL software license is applied to software libraries and requires sharing, under the same terms, the source code of any modified or unmodified version of the library, which the user wants to further distribute. Integration and distribution of proprietary software with different license terms in conjunction with LGPL software is in principle allowed provided that the library is just linked to the main application.
+</aside>
+</section>
+<section class="slide level1">
+
+<h3 id="agpl">AGPL</h3>
+<ul>
+<li><p>Strong copyleft</p></li>
+<li><p>Patents allowed</p></li>
+<li><p>Viral</p></li>
+<li><p><a href="http://opensource.org/licenses/AGPL-3.0" class="uri">http://opensource.org/licenses/AGPL-3.0</a></p></li>
+</ul>
+<aside class="notes">
+Affero GPL is a very strong copyleft license that requires anyone distributing or using server applications using AGPL protected software to made available the source code to any network user. This license is also considered viral (see above “GPL”). The license provides an express grant of a license under patents, which the contributors may have on the software. Commercial use of AGPL code is allowed as long as the source code is also provided to end users.
+</aside>
+</section>
+<section class="slide level1">
+
+<h2 id="challenges">Challenges</h2>
+<p>Dependencies documentation management</p>
+<aside class="notes">
+What about documentation structures and mechanisms when applied to code dependencies? At first it sounds complex, and it’s even more complex than it sounds. Just as licenses can be viral (as seen previously) how viral can be code documentation and code attributes? Not well handled at the time being and being current research subject.
+</aside>
+</section>
+<section class="slide level1">
+
+<h2 id="various-ways-to-code-documentation">Various ways to code documentation</h2>
+<ul>
+<li><p>embedded documentation</p></li>
+<li><p>supported documentation with a README file</p></li>
+<li><p>supported documentation with metadata</p></li>
+<li><p>documentation AND publication with a software paper</p></li>
+</ul>
+<aside class="notes">
+We will talk about 4 ways to document your code from the closest place to your lines of code to the most peripheral documentation
+</aside>
+</section>
+<section class="slide level1">
+
+<h3 id="embedded-documentation">Embedded documentation</h3>
+<ul>
+<li><p>comments &amp; annotations</p></li>
+<li><p>documentation generation</p></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="a-python-example">A python Example</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1">  <span class="co">&quot;&quot;&quot;@package docstring</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">  Documentation for this module.</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">  More details.</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">  &quot;&quot;&quot;</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">  </a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">  <span class="kw">def</span> func():</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">      <span class="co">&quot;&quot;&quot;Documentation for a function.</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">      More details.</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">      &quot;&quot;&quot;</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">      <span class="cf">pass</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">  </a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">  <span class="kw">class</span> PyClass:</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">      <span class="co">&quot;&quot;&quot;Documentation for a class.</span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co">      More details.</span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co">      &quot;&quot;&quot;</span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16">      <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">          <span class="co">&quot;&quot;&quot;The constructor.&quot;&quot;&quot;</span></a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">          <span class="va">self</span>._memVar <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">  </a>
+<a class="sourceLine" id="cb1-20" data-line-number="20">      <span class="kw">def</span> PyMethod(<span class="va">self</span>):</a>
+<a class="sourceLine" id="cb1-21" data-line-number="21">          <span class="co">&quot;&quot;&quot;Documentation for a method.&quot;&quot;&quot;</span></a>
+<a class="sourceLine" id="cb1-22" data-line-number="22">          <span class="cf">pass</span></a></code></pre></div>
+</section>
+<section class="slide level1">
+
+<h3 id="doxygen-documentation">Doxygen Documentation</h3>
+<p><img src="gDh0PhQ.png" width="250"> <img src="cOyye5i.png" width="250"></p>
+<p><a href="https://readthedocs.org/">ReadtheDocs</a></p>
+</section>
+<section class="slide level1">
+
+<h3 id="supported-documentation-with-a-readme-file">Supported documentation with a README file</h3>
+<p>README file shall include</p>
+<pre><code>  $project
+  ========
+  
+  $project will solve your problem of where to start with documentation,
+  by providing a basic explanation of how to do it easily.
+  
+  Look how easy it is to use:
+  
+      import project
+      # Get your stuff done
+      project.do_stuff()
+  
+  Features
+  --------
+  
+  - Be awesome
+  - Make things faster
+  
+  Installation
+  --------
+  
+  Install $project by running:
+  
+      install project
+  
+  Contribute
+  --------
+  - Issue Tracker: github.com/$project/$project/issues
+  - Source Code: github.com/$project/$project
+  
+  Support
+  --------
+  
+  If you are having issues, please let us know.
+  We have a mailing list located at: project@google-groups.com
+  
+  License
+  --------
+  
+  The project is licensed under the BSD license.</code></pre>
+</section>
+<section class="slide level1">
+
+<h3 id="supported-documentation-with-metadata">Supported documentation with metadata</h3>
+</section>
+<section class="slide level1">
+
+<p>DOAP (Description Of A Project) description files</p>
+<aside class="notes">
+DOAP stands for description of a project it’s an rdf/xml schema and vocabulary just mentioning slightly deprecated
+</aside>
+</section>
+<section class="slide level1">
+
+<p>CITATION files</p>
+<p>(2 examples: CFF and codemeta)</p>
+</section>
+<section class="slide level1">
+
+<p>EXAMPLE 1 : Citation File Format (CFF) file (yaml)</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="fu">cff-version:</span><span class="at"> 1.0.3</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="fu">message:</span><span class="at"> If you use this software, please cite it as below.</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="fu">authors:</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">  <span class="kw">-</span> <span class="fu">family-names:</span><span class="at"> Masson</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">    <span class="fu">given-names:</span><span class="at"> Antoine</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">    <span class="fu">orcid:</span><span class="at"> https://orcid.org/0000-0002-7993-5698</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">    <span class="fu">affiliation:</span><span class="at"> Ecole Polytechnique Fédérale de Lausanne, Library</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">    <span class="fu">email:</span><span class="at"> antoine.masson@epfl.ch</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="fu">title:</span><span class="at"> Cost Calculator</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="fu">version:</span><span class="at"> beta 2.1</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="fu">doi:</span><span class="at"> 10.5281/zenodo.1469034</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="fu">date-released:</span><span class="at"> 2018-10-08</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="fu">repository-code:</span><span class="at"> https://c4science.ch/source/costcalc/repository/master/</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="fu">url:</span><span class="at"> https://rdmepfl.github.io/costcalc/</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="fu">keywords:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">    <span class="kw">-</span> research data</a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">    <span class="kw">-</span> storage</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">    <span class="kw">-</span> cost estimate</a>
+<a class="sourceLine" id="cb3-19" data-line-number="19">    <span class="kw">-</span> planning</a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="fu">abstract:</span><span class="at"> A dynamic online tool for calculating the cost of research data storage services. It&#39;s highly modular and can be adapted for all kind of application. The system is really easy to install as it uses only opensource javascript libraries.</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="fu">license:</span><span class="at"> GPL-3.0-only</span></a></code></pre></div>
+<aside class="notes">
+CFF stands for Citation File Format (2017). The aim of this xsd schema (13 core elements) is proper and machine actionable code/software citation
+</aside>
+</section>
+<section class="slide level1">
+
+<p>EXAMPLE 2 : codemeta file (json-ld)</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="fu">{</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">    <span class="dt">&quot;@context&quot;</span><span class="fu">:</span> <span class="st">&quot;https://doi.org/10.5063/SCHEMA/CODEMETA-1.0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">    <span class="dt">&quot;@type&quot;</span><span class="fu">:</span> <span class="st">&quot;Code&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">    <span class="dt">&quot;author&quot;</span><span class="fu">:</span> <span class="ot">[</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">        <span class="fu">{</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">            <span class="dt">&quot;@type&quot;</span><span class="fu">:</span> <span class="st">&quot;Person&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">            <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Antoine Masson&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">            <span class="dt">&quot;@id&quot;</span><span class="fu">:</span> <span class="st">&quot;https://orcid.org/0000-0002-7993-5698&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">            <span class="dt">&quot;affiliation&quot;</span><span class="fu">:</span> <span class="st">&quot;Ecole Polytechnique Fédérale de Lausanne, Library&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">            <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;antoine.masson@epfl.ch&quot;</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">        <span class="fu">}</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">    <span class="ot">]</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Cost Calculator&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">    <span class="dt">&quot;softwareVersion&quot;</span><span class="fu">:</span> <span class="st">&quot;beta 2.1&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">    <span class="dt">&quot;identifier&quot;</span><span class="fu">:</span> <span class="st">&quot;10.5281/zenodo.1469034&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">    <span class="dt">&quot;datePublished&quot;</span><span class="fu">:</span> <span class="st">&quot;2018-10-08&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17">    <span class="dt">&quot;codeRepository&quot;</span><span class="fu">:</span> <span class="st">&quot;https://c4science.ch/source/costcalc/repository/master/&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18">    <span class="dt">&quot;URL&quot;</span><span class="fu">:</span> <span class="st">&quot;https://rdmepfl.github.io/costcalc/&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19">    <span class="dt">&quot;programmingLanguage&quot;</span><span class="fu">:</span> <span class="st">&quot;javascript&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20">    <span class="dt">&quot;keywords&quot;</span><span class="fu">:</span> <span class="st">&quot;research data, storage, cost estimate, planning&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-21" data-line-number="21">    <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;A dynamic online tool for calculating the cost of research data storage services. It&#39;s highly modular and can be adapted for all kind of application. The system is really easy to install as it uses only opensource javascript libraries.&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22">    <span class="dt">&quot;license&quot;</span><span class="fu">:</span> <span class="st">&quot;GPL-3.0-only&quot;</span></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="fu">}</span></a></code></pre></div>
+<aside class="notes">
+The Codemeta Project has been active for several years (latest version 2017). The second version of this json-ld schema has a set of 74 elements to precisely and accurately describe all kinds of features for code/software (and serve any purpose related to code and software).
+</aside>
+</section>
+<section class="slide level1">
+
+<h3 id="repository-metadata">Repository metadata</h3>
+</section>
+<section class="slide level1">
+
+<p>EXAMPLE 3 : Zenodo repository with doi attribution</p>
+<p><a href="http://doi.org/10.5281/zenodo.1469603" class="uri">http://doi.org/10.5281/zenodo.1469603</a></p>
+<p><img data-src="ZPLOB8M.jpg" alt="zenodo" /></p>
+<aside class="notes">
+here’s what our costcalculator code looks like once in Zenodo we notice the metadata, DOI in particular we notice the cff and codemeta files among all the files
+</aside>
+</section>
+<section class="slide level1">
+
+<h2 id="software-paper">Software paper</h2>
+<p>documentation AND publication</p>
+<aside class="notes">
+software papers add another layer of documentation AND publication Such papers highlight the software itself The research question it is based upon is not the point The algorithm novelty is not the point either
+</aside>
+</section>
+<section class="slide level1">
+
+<p>EXAMPLE 1 : Journal of Open Source Software (JOSS)</p>
+<p><a href="https://doi.org/10.21105/joss.01091" class="uri">https://doi.org/10.21105/joss.01091</a></p>
+<p><img data-src="5DMt1Xv.jpg" alt="joss" /></p>
+</section>
+<section class="slide level1">
+
+<p>EXAMPLE 2 : Journal of Cheminformatics</p>
+<p><a href="https://doi.org/10.1186/s13321-018-0297-4" class="uri">https://doi.org/10.1186/s13321-018-0297-4</a></p>
+<p><img data-src="V6rhWHU.jpg" alt="joc" /></p>
+</section>
+<section class="slide level1">
+
+<h2 id="a-few-facts-and-figures">A few facts and figures</h2>
+</section>
+<section class="slide level1">
+
+A quick scoping search in GitHub showed:
+<p class="fragment">
+several thousand mentions of DOAP files,
+</p>
+<p class="fragment">
+a few hundred mentions of codemeta files,
+</p>
+<p class="fragment">
+a few dozens of cff files…
+</p>
+</section>
+<section class="slide level1">
+
+<p><a href="https://blog.datacite.org/doi-registrations-software/">58300 DOIs for software (May 2018)</a> to compare with</p>
+<p class="fragment">
+<a href="https://www.doi.org/factsheets/DOIKeyFacts.html">175 million DOI names in the world (July 2018)</a>
+</p>
+<aside class="notes">
+What’s more, most recent data show that
+</aside>
+</section>
+<section class="slide level1">
+
+<p><a href="https://www.software.ac.uk/resources/guides/which-journals-should-i-publish-my-software">Dozens of journals</a> dedicated to scientific software</p>
+<aside class="notes">
+for those interested in software journals, as of today, there are dozens of journals (see for instance Software Sustainability Institute website)
+</aside>
+</section>
+<section class="slide level1">
+
+<h2 id="focus-on-metrics">Focus on metrics</h2>
+</section>
+<section class="slide level1">
+
+<p>Software and source code developers as full scientific contributors</p>
+<p class="fragment">
+Metrics for acknowledgment
+</p>
+</section>
+<section class="slide level1">
+
+<p>Metrics for data lead to metrics for code</p>
+<p class="fragment">
+Metrics for evaluation purpose
+</p>
+<aside class="notes">
+Current position is that data without code or software would be half-useful data only. Code considered as central research output and as such
+</aside>
+</section>
+<section class="slide level1">
+
+<p>Is <a href="https://peerj.com/preprints/2630/">code/software “just data”</a>?</p>
+<p>For <a href="https://genr.eu/wp/genr-software-citation-round-up/?pk_campaign=feed&amp;pk_kwd=genr-software-citation-round-up">citation</a> purpose, code/software is clearly not “just data”.</p>
+<aside class="notes">
+Work in the academic world currently assuming that code should be handled as a type of research output <em>per se</em>.
+</aside>
+</section>
+<section class="slide level1">
+
+<p>The topic of metrics for code is still new, gaining attention, fostering efforts such as <a href="https://www.force11.org/software-citation-principles">FORCE11 working group</a>.</p>
+<aside class="notes">
+The topic of metrics for code is still new (&lt; 5 years)
+</aside>
+</section>
+<section class="slide level1">
+
+<p>Metrics for code:</p>
+<p>traditional scientometrics</p>
+<p>newer altmetrics</p>
+<aside class="notes">
+mix between current widely adopted “traditional” scientific metrics related to the publication process and altmetrics (for instance Plumx metrics for Plumx platform handle code as a measurable research artifact <a href="https://plumanalytics.com/learn/about-artifacts/">PlumX</a>)
+</aside>
+</section>
+<section class="slide level1">
+
+Defining metrics for code is
+<p class="fragment">
+a work in progress
+</p>
+<p class="fragment">
+… and controversial
+</p>
+<aside class="notes">
+in short, as every work on metrics (for instance <a href="https://ec.europa.eu/info/files/open-science-monitor-methodological-note_en">Open Science Monitor indexes</a>). Heated debate
+</aside>
+</section>
+<section class="slide level1">
+
+<h2 id="food-for-thought">Food for thought</h2>
+</section>
+<section class="slide level1">
+
+<h3 id="remember">Remember</h3>
+<ul>
+<li>comments, annotations, doc generation</li>
+<li>README</li>
+<li>DOAP</li>
+<li>metadata (CFF, codemeta)</li>
+<li>software papers</li>
+</ul>
+<p>Can you relate?</p>
+</section>
+<section class="slide level1">
+
+<h3 id="stay-tuned">Stay tuned</h3>
+<ul>
+<li>Code plagiarism</li>
+<li>Licenses</li>
+<li>Dependencies documentation management</li>
+<li>Metrics for code</li>
+</ul>
+<p>Can you relate?</p>
+</section>
+<section class="slide level1">
+
+<h2 id="further-readings">Further readings</h2>
+</section>
+<section class="slide level1">
+
+<p>Examples of source code (metadata) repositories</p>
+<ul>
+<li><a href="https://libraries.io/" class="uri">https://libraries.io/</a></li>
+<li><a href="http://ascl.net/" class="uri">http://ascl.net/</a></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<p>Software-specific metadata schemas</p>
+<ul>
+<li><a href="https://codemeta.github.io/">CodeMeta</a></li>
+<li><a href="https://citation-file-format.github.io/">Citation File Format (CFF)</a></li>
+<li><a href="https://github.com/ewilderj/doap">DOAP</a></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<p>Software preservation initiatives</p>
+<ul>
+<li><a href="http://www.softwarepreservationnetwork.org/" class="uri">http://www.softwarepreservationnetwork.org/</a></li>
+<li><a href="https://www.softwareheritage.org/" class="uri">https://www.softwareheritage.org/</a></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<p>Open Source Licenses</p>
+<ul>
+<li><a href="https://tto.epfl.ch/scientists/software/choose_the_license/open_source_licenses/" class="uri">https://tto.epfl.ch/scientists/software/choose_the_license/open_source_licenses/</a></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<p>Recommended readings</p>
+<ul>
+<li><a href="https://www.software.ac.uk/" class="uri">https://www.software.ac.uk/</a></li>
+<li><a href="https://genr.eu/wp/" class="uri">https://genr.eu/wp/</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5007752/">Top 10 metrics for life science software good practices</a></li>
+<li><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510">Good enough practices in scientific computing</a></li>
+<li><a href="https://link.springer.com/book/10.1007%2F978-1-4419-7719-9">Handbook of Open Source Tools</a></li>
+<li><a href="https://europepmc.org/articles/pmc4973366">How open science helps researchers succeed</a></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="documentation_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="documentation_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'documentation_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
